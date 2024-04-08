@@ -178,6 +178,7 @@ if ! systemctl is-active --quiet "$service_name.service" ; then
     return 1
 fi
 
+source $HOME/.bash_profile
 touch wallet.txt
 if grep -Fxq "$WALLET_NAME" wallet.txt
 then
