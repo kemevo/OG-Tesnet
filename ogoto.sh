@@ -151,6 +151,7 @@ function snaple() {
 }
 
 function senkron() {
+    source ~/.bash_profile	
     echo "Sync status: $(evmosd status | jq .SyncInfo.catching_up)"
     echo -n "Press SPACE to continue"
       while true; do
@@ -167,10 +168,7 @@ function log_gor() {
     journalctl -u ogd -f -o cat
 }
 
-
-
 function cuzdan_ekle() {
-
 service_name="ogd"
 
 if ! systemctl is-active --quiet "$service_name.service" ; then
@@ -212,6 +210,7 @@ function cuzdan_gor(){
 }
 
 function validator_kur(){
+source ~/.bash_profile
 read -n1 -s -r -p $'\033[0;31mBefore setup Validator, make sure that the sync status is false and that you get tokens from faucet(https://faucet.0g.ai/).\nPress space to continue or press any key to cancel...\033[0m\n' key
 if [ "$key" = ' ' ]; then
     temp="$(evmosd status | jq .SyncInfo.catching_up)"
